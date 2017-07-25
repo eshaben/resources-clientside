@@ -1,0 +1,77 @@
+#notes div {
+    position: relative;
+    width: 400px;
+    min-height: 100px;
+    margin: 4em auto;
+    padding: 60px 15px 15px 15px;
+    background: #EFF2B9;
+    -webkit-box-shadow: 0 2px 12px rgba(0,0,0,.5);
+    -moz-box-shadow: 0 2px 12px rgba(0,0,0,.5);
+    box-shadow: 0 1px 2px #000;
+    -webkit-transform: rotate(-.5deg);
+    -moz-transform: rotate(-.5deg);
+    -o-transform: rotate(-.5deg);
+}
+
+#notes div:nth-child(even) {
+    -webkit-transform: rotate(.5deg);
+    -moz-transform: rotate(.5deg);
+    -o-transform: rotate(.5deg);
+}
+
+#notes div p {
+    text-align: center;
+    font-family: 'Gochi Hand', cursive;
+    color: #000;
+    text-shadow: white 1px 1px 0px;
+    overflow: auto;
+}
+
+#notes div::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 115px;
+    top: -15px;
+    width: 75px;
+    height: 25px;
+    z-index: 2;
+    background-color: rgba(243,245,228,0.5);
+    border: 2px solid rgba(255,255,255,0.5);
+    -webkit-box-shadow: 0 0 5px #888;
+    -moz-box-shadow: 0 0 5px #888;
+    box-shadow: 2px 2px 2px #000;
+    -webkit-transform: rotate(-6deg);
+    -moz-transform: rotate(-6deg);
+    -o-transform: rotate(-6deg);
+}
+
+#notes div:nth-child(even)::before {
+    -webkit-transform: rotate(6deg);
+    -moz-transform: rotate(6deg);
+    -o-transform: rotate(6deg);
+}
+
+.title {
+  font-size: 32px;
+  font-family: 'Gochi Hand', cursive;
+  text-align: center;
+}
+
+.type {
+  font-size: 24px !important;
+}
+
+.description {
+  font-size: 24px !important;
+}
+
+#notes > div {
+  margin-left: 5em !important;
+  height: 400px !important;
+  overflow: auto !important;
+}
+
+.link {
+  padding-bottom: 2em;
+}
