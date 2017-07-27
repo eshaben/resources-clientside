@@ -75,3 +75,8 @@
 .link {
   padding-bottom: 2em;
 }
+
+.form {
+  width: 40%;
+  margin: auto;
+}

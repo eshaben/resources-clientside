@@ -1,37 +1,43 @@
 $(document).ready(function(){
   $(".button-collapse").sideNav();
   $('select').material_select();
+  $('.modal').modal();
+
 })
 
 var baseURL = 'http://localhost:8080/resource/'
+var herokuURL = 'https://murmuring-temple-70443.herokuapp.com/resource/'
 
-getResource(baseURL)
+getResource(herokuURL)
 
-$('.submit').click(processPost)
+$('.submit').click(processRequest)
 
 
-function getResource(baseURL){
-  $.get(baseURL)
+function getResource(herokuURL){
+  $.get(herokuURL)
    .then(displayResource)
 }
 
 function displayResource(data){
   for(var i=0; i <data.length; i++){
-    $('#notes').append(
-        `<div class = "col s12 m4 id-${data[i].id}">
+    $('.card').append(
+        `
+        <div class = "col s12 m4" id="${data[i].id}">
           <h2 class= "title">${data[i].title}</h2>
           <p class= "type">Type: ${data[i].type}</p>
           <p class = "description">${data[i].description}</p>
           <a class= "link" href="${data[i].link}">Go To Resource!</a>
           <button class= "delete" id= "${data[i].id}"><i id="${data[i].id}"class="material-icons">delete</i></button>
-          <button class= "edit" id= "${data[i].id}"><i class="material-icons">edit</i></button>
-        </div>`
+          <button class= "edit btn" id="${data[i].id}"><i id="${data[i].id}" class="material-icons">edit</i></button>
+        </div>
+        `
         )
   }
   addDeleteEvent();
+  addEditEvent();
 }
 
-function processPost(event){
+function processRequest(event){
   event.preventDefault()
 
   var resourceTitle = $('#resource-title').val()
@@ -60,11 +66,11 @@ function processPost(event){
       quarter: resourceQuarter
   }
 
-  $.post(baseURL, resourceObject)
+  $.post(herokuURL, resourceObject)
     .then(function(data){
       if (data.message == "success"){
         $('#notes').empty()
-      getResource(baseURL)
+      getResource(herokuURL)
     }
   })
 }
@@ -73,16 +79,14 @@ function addDeleteEvent(){
   const deleteButtons = $('.delete')
 
       deleteButtons.on("click", function(event){
-        const id = event.target.id;
-        console.log(id);
+        var id = event.target.id;
         deleteResource(id)
   })
 }
 
 function deleteResource(id){
-  console.log(baseURL + id)
   $.ajax({
-    url: baseURL + id,
+    url: herokuURL + id,
     type: 'DELETE',
     success: function(result){
       console.log("success!")
@@ -91,17 +95,24 @@ function deleteResource(id){
   .then(function(data){
     if(data.message === "success"){
       $('#notes').empty()
-      getResource(baseURL);
+      getResource(herokuURL);
     }
   })
 }
-  // (baseURL + id)
-  //   .then(function(data){
-  //     console.log(data);
-  //     data.json()
-  //   })
-  //     .then(function(){
-  //       if (data.message == "success") {
-  //         getResource(baseURL)
-  //       }
-  //     })
+
+function addEditEvent(){
+  const editButtons = $('.edit')
+
+  editButtons.on("click", function(event) {
+    console.log("you clicked me!");
+    var id = event.target.id;
+    console.log(id);
+
+    createEditForm(id)
+  })
+}
+
+function createEditForm(id){
+
+
+}
