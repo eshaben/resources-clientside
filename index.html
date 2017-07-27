@@ -31,11 +31,59 @@
     </header>
 
     <main class = "row">
-      <!-- <div class = "row"> -->
         <section id= "notes">
 
         </section>
-      <!-- </div> -->
+        <section class="form">
+          <div class="row">
+            <form class="col s12">
+              <div class="row">
+                <div class="input-field col s6">
+                  <input placeholder="" id="resource-title" type="text" class="validate">
+                  <label for="resource-title">Title</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <select class = "resource-type">
+                    <option value="0">Choose a type</option>
+                    <option value="1">Learn Article</option>
+                    <option value="2">Tool</option>
+                    <option value="3">Exercise</option>
+                    <option value="4">Article</option>
+                    <option value="5">Documentation</option>
+                    <option value="3">Other</option>
+                  </select>
+                  <label>Type</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input id="resource-link" type="text" class="validate">
+                  <label for="resource-link">Link</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <textarea id="resource-description" class="materialize-textarea"></textarea>
+                  <label for="resource-description">Description</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <select class="resource-quarter">
+                    <option value="" disabled selected>Choose a quarter</option>
+                    <option value="1">Q1</option>
+                    <option value="2">Q2</option>
+                    <option value="3">Q3</option>
+                  </select>
+                  <label>Quarter</label>
+                </div>
+              </div>
+              <button type="submit" name="button" class="waves-effect waves-light btn submit">Submit A Resource!</button>
+            </form>
+          </div>
+        </section>
     </main>
 
     <footer class="page-footer">
